@@ -4,14 +4,12 @@
   box-sizing: border-box;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-
 body {
   display: grid;
   height: 100vh;
   place-items: center;
   background-color: #383e42;
 }
-
 form {
   display: grid;
   grid-template-columns: 1fr;
@@ -22,17 +20,14 @@ form {
   border-radius: 0.35em;
   color: #fff;
 }
-
 h1 {
   margin-bottom: 1em;
 }
-
 .name {
   display: flex;
   justify-content: space-between;
   gap: 1em;
 }
-
 input {
   padding: 0.5em 1.5em;
   border-radius: 1em;
@@ -40,10 +35,10 @@ input {
   outline: none;
   font-size: 1em;
   color: #383e42;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   letter-spacing: 0.05em;
+  &::placeholder {
+    color: #383e42;
+    letter-spacing: 0.075em;
+  }
 }
-input::placeholder {
-  color: #383e42;
-  letter-spacing: 0.075em;
-}/*# sourceMappingURL=index.css.map */
