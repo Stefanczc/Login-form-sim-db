@@ -16,7 +16,6 @@ form {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1em;
-  text-align: center;
   background-color: #76af99;
   padding: 2em;
   border-radius: 0.35em;
@@ -25,6 +24,7 @@ form {
 
 h1 {
   margin-bottom: 1em;
+  text-align: center;
 }
 
 .name {
@@ -43,7 +43,44 @@ input {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.05em;
 }
+input::-moz-placeholder {
+  color: #C3ACB9;
+  letter-spacing: 0.075em;
+}
 input::placeholder {
   color: #C3ACB9;
   letter-spacing: 0.075em;
+}
+
+.cbox {
+  margin-right: 0.5em;
+}
+
+.registerBtn {
+  cursor: pointer;
+  padding: 0.5em 2.25em;
+  background: linear-gradient(to top, #43c6ac, #f8ffae);
+  transition-duration: 0.25s;
+  color: #383e42;
+  margin-right: 0.25em;
+}
+.registerBtn:hover {
+  opacity: 0.65;
+}
+
+a {
+  text-decoration: none;
+  transition-duration: 0.25s;
+  color: #34e89e;
+}
+a:hover {
+  color: gold;
+}
+
+label {
+  font-size: 1.1em;
+}
+
+.signIn {
+  margin-left: 0.25em;
 }/*# sourceMappingURL=index.css.map */
