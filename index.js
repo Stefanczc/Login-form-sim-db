@@ -1,4 +1,6 @@
 const registerBtn = document.getElementById('register');
+const signInBtn = document.getElementById('signInBtn');
+const signInForm = document.getElementById('signInForm');
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 function addUser() {
@@ -6,6 +8,12 @@ function addUser() {
     const lastName = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].email === email) {
+            alert('Email is already in use');
+            return;
+        }
+    }
     users.push({
         firstName: firstName,
         lastName: lastName,
@@ -13,7 +21,25 @@ function addUser() {
         password: password
     });
     saveUserToLocalStorage();
-    alert('Registration Successfull!');
+    alert('Registration Successful!');
+}
+
+function signInUser(e) {
+    e.preventDefault();
+
+    signInForm.style.transform = 'translate(300px, 0)';
+    signInForm.style.backgroundColor = 'red';
+
+    const email = document.getElementById('signInEmail').value;
+    const password = document.getElementById('signInPassword').value;
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].email === email || users[i].password === password) {
+            alert('LogIn succesful!');
+            return;
+        }
+    }
+    alert('Incorrect Credentials');
 }
 
 function saveUserToLocalStorage() {
@@ -21,6 +47,7 @@ function saveUserToLocalStorage() {
 }
 
 registerBtn.addEventListener('click', addUser);
+signInBtn.addEventListener('click', signInUser);
 
 
 

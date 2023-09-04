@@ -56,7 +56,8 @@ input::placeholder {
   margin-right: 0.5em;
 }
 
-.registerBtn {
+.registerBtn,
+.submitBtn {
   cursor: pointer;
   padding: 0.5em 2.25em;
   background: linear-gradient(to top, #43c6ac, #f8ffae);
@@ -64,7 +65,8 @@ input::placeholder {
   color: #383e42;
   margin-right: 0.25em;
 }
-.registerBtn:hover {
+.registerBtn:hover,
+.submitBtn:hover {
   opacity: 0.65;
 }
 
@@ -83,4 +85,11 @@ label {
 
 .signIn {
   margin-left: 0.25em;
+}
+
+.signInForm {
+  z-index: -1;
+  min-width: 20em;
+  display: grid;
+  place-items: center;
 }/*# sourceMappingURL=index.css.map */

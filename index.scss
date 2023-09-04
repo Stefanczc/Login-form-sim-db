@@ -45,7 +45,8 @@ input {
 .cbox {
   margin-right: 0.5em;
 }
-.registerBtn {
+.registerBtn,
+.submitBtn {
   cursor: pointer;
   padding: 0.5em 2.25em;
   background: linear-gradient(to top, #43c6ac, #f8ffae);
@@ -69,6 +70,12 @@ label {
 }
 .signIn {
   margin-left: 0.25em;
+}
+.signInForm {
+  z-index: -1;
+  min-width: 20em;
+  display: grid;
+  place-items: center;
 }
 
 
