@@ -1,6 +1,8 @@
 const registerBtn = document.getElementById('register');
 const signInBtn = document.getElementById('signInBtn');
 const signInForm = document.getElementById('signInForm');
+const signInLink = document.getElementById('signInLink');
+const signUpForm = document.getElementById('signUpForm');
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 function addUser() {
@@ -26,13 +28,8 @@ function addUser() {
 
 function signInUser(e) {
     e.preventDefault();
-
-    signInForm.style.transform = 'translate(300px, 0)';
-    signInForm.style.backgroundColor = 'red';
-
     const email = document.getElementById('signInEmail').value;
     const password = document.getElementById('signInPassword').value;
-
     for (let i = 0; i < users.length; i++) {
         if (users[i].email === email || users[i].password === password) {
             alert('LogIn succesful!');
@@ -42,12 +39,18 @@ function signInUser(e) {
     alert('Incorrect Credentials');
 }
 
+function openSignIn(e) {
+    e.preventDefault();
+    signInForm.classList.toggle('signInFormOpen');
+}
+
 function saveUserToLocalStorage() {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
 registerBtn.addEventListener('click', addUser);
 signInBtn.addEventListener('click', signInUser);
+signInLink.addEventListener('click', openSignIn)
 
 
 

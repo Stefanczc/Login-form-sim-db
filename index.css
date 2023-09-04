@@ -7,7 +7,7 @@
 
 body {
   display: grid;
-  height: 100vh;
+  height: 60vh;
   place-items: center;
   background-color: #383e42;
 }
@@ -89,7 +89,13 @@ label {
 
 .signInForm {
   z-index: -1;
+  position: absolute;
   min-width: 20em;
   display: grid;
   place-items: center;
+  transition: 1s ease-out;
+}
+
+.signInFormOpen {
+  transform: translate(0, 23em);
 }/*# sourceMappingURL=index.css.map */
