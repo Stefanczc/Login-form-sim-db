@@ -12,49 +12,92 @@ function addUser(e) {
     const lastName = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
     const firstNameError = document.getElementById('firstNameError');
     const lastNameError = document.getElementById('lastNameError');
     const emailError = document.getElementById('emailError');
     const passwordError = document.getElementById('passwordError');
+    const confirmPasswordError = document.getElementById('confirmPasswordError');
 
-    const fieldsList = [];
-    const errorsList = [];
+    let validFields = false;
 
-    fieldsList.push(firstName);
-    errorsList.push(firstNameError);
-    fieldsList.push(lastName);
-    errorsList.push(lastNameError);
-    fieldsList.push(email);
-    errorsList.push(emailError);
-    fieldsList.push(password);
-    errorsList.push(passwordError);
-
-    // for (let i = 0; i < users.length; i++) {
-    //     if (users[i].email === email) {
-    //         alert('Email is already in use');
-    //         return;
-    //     }
-    // }
-    users.push({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password
-    });
-
-    for (let i = 0; i < fieldsList.length; i++) {
-        if (fieldsList[i].length < 1) {
-            errorsList[i].innerText = 'Field is required';
-            errorsList[i].classList.add('firstNameError');
-        }
-        else {
-            errorsList[i].innerText = '';
-            errorsList[i].classList.remove('firstNameError');
-        }
+    if (firstName.length < 3) {
+        firstNameError.innerText = 'At least 3 characters';
+        firstNameError.classList.add('fieldsError');
+        validFields = true;
     }
-    saveUserToLocalStorage();
-    alert('Registration Successful!');
+    else {
+        firstNameError.innerText = '';
+        validFields = false;
+    }
+    if (lastName.length < 3) {
+        lastNameError.innerText = 'At least 3 characters';
+        lastNameError.classList.add('fieldsError');
+        validFields = true;
+    }
+    else {
+        lastNameError.innerText = '';
+        validFields = false;
+    }
+    if (!email.includes('@') || email.length < 3) {
+        emailError.innerText = 'Incorrect E-mail';
+        emailError.classList.add('fieldsError');
+        validFields = true;
+    }
+    else {
+        emailError.innerText = '';
+        validFields = false;
+    }
+    if (password !== confirmPassword) {
+        passwordError.innerText = 'Passwords do not match';
+        confirmPasswordError.innerText = 'Passwords do not match';
+        passwordError.classList.add('fieldsError');
+        confirmPasswordError.classList.add('fieldsError');
+        validFields = true;
+    }
+    else {
+        passwordError.innerText = '';
+        confirmPasswordError.innerText = '';
+        validFields = false;
+    }
+    if (password.length < 8) {
+        passwordError.innerText = 'At least 8 characters';
+        passwordError.classList.add('fieldsError');
+        validFields = true;
+    }
+    else {
+        passwordError.innerText = '';
+        validFields = false;
+    }
+    if (confirmPassword.length < 8) {
+        confirmPassword.innerText = 'At least 8 characters';
+        confirmPassword.classList.add('fieldsError');
+        validFields = true;
+    }
+    else {
+        confirmPassword.innerText = '';
+        validFields = false;
+    }
+    console.log(users, validFields);
+    if (validFields === false) {
+        users.push({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        });
+        saveUserToLocalStorage();
+        alert('Registration Successful!');
+        document.getElementById('firstname').value = '';
+        document.getElementById('lastname').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('confirmPassword').value = '';
+    }
+    else {
+        return;
+    }
 }
 
 function signInUser(e) {

@@ -16,7 +16,7 @@ body {
 form {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1em;
+  gap: 0.5em;
   background-color: #76af99;
   padding: 2em;
   border-radius: 0.35em;
@@ -36,7 +36,7 @@ h1 {
 
 .firstName,
 .lastName {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 input {
@@ -111,7 +111,7 @@ label {
   transition: opacity 1s ease-in-out;
 }
 
-.firstNameError {
+.fieldsError {
   color: red;
   font-size: 1.2em;
   font-weight: bold;
