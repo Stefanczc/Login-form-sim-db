@@ -9,7 +9,8 @@ body {
   display: grid;
   height: 60vh;
   place-items: center;
-  background-color: #383e42;
+  background: url(/park.jpg);
+  background-repeat: no-repeat;
 }
 
 form {
@@ -33,6 +34,11 @@ h1 {
   gap: 1em;
 }
 
+.firstName,
+.lastName {
+  margin-bottom: 1em;
+}
+
 input {
   padding: 0.5em 1.5em;
   border-radius: 1em;
@@ -42,10 +48,6 @@ input {
   color: #383e42;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.05em;
-}
-input::-moz-placeholder {
-  color: #C3ACB9;
-  letter-spacing: 0.075em;
 }
 input::placeholder {
   color: #C3ACB9;
@@ -93,9 +95,26 @@ label {
   min-width: 20em;
   display: grid;
   place-items: center;
-  transition: 1s ease-out;
+  transition: 1s ease-in-out;
+}
+
+.signUpForm {
+  transition: 1s ease-in-out;
 }
 
 .signInFormOpen {
-  transform: translate(0, 23em);
+  transform: translate(0, 28em);
+}
+
+.signUpFormFade {
+  opacity: 0.6;
+  transition: opacity 1s ease-in-out;
+}
+
+.firstNameError {
+  color: red;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  text-align: center;
 }/*# sourceMappingURL=index.css.map */

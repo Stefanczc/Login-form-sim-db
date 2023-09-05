@@ -8,7 +8,8 @@ body {
   display: grid;
   height: 60vh;
   place-items: center;
-  background-color: #383e42;
+  background: url(/park.jpg);
+  background-repeat: no-repeat;
 }
 form {
   display: grid;
@@ -27,6 +28,10 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 1em;
+}
+.firstName,
+.lastName {
+  margin-bottom: 1em;
 }
 input {
   padding: 0.5em 1.5em;
@@ -77,9 +82,23 @@ label {
   min-width: 20em;
   display: grid;
   place-items: center;
-  transition: 1s ease-out;
+  transition: 1s ease-in-out;
+}
+.signUpForm {
+  transition: 1s ease-in-out;
 }
 .signInFormOpen {
-  transform: translate(0, 23em);
+  transform: translate(0, 28em);
+}
+.signUpFormFade {
+  opacity: 0.6;
+  transition: opacity 1s ease-in-out;
+}
+.firstNameError {
+  color: red;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  text-align: center;
 }
 

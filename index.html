@@ -13,25 +13,35 @@
     <form action="" class="signUpForm" id="signUpForm">
         <h1>Sign Up to JobExplorer</h1>
         <div class="name" id="name">
-            <input type="text" placeholder="First Name" id="firstname">
-            <input type="text" placeholder="Last Name" id="lastname">
+            <div>
+                <input type="text" class="firstName" placeholder="First Name" id="firstname">
+                <p id="firstNameError"></p>
+            </div>
+            <div>
+                <input type="text" class="lastName" placeholder="Last Name" id="lastname">
+                <p id="lastNameError"></p>
+            </div>
         </div>
         <input type="email" placeholder="Email" id="email">
+        <p id="emailError"></p>
         <input type="password" placeholder="Password" id="password">
+        <p id="passwordError"></p>
         <input type="password" placeholder="Confirm Password" id="confirmPassword">
-        <label for="cbox"><input type="checkbox" id="cbox" class="cbox">I accept the <a href="./terms.html">Terms & Conditions</a>
+        <label for="cbox"><input type="checkbox" id="cbox" class="cbox">I accept the <a href="./terms.html">Terms &
+                Conditions</a>
             and
             the <a href="./privacy.html">Privacy Policy</a></label>
         <div><input type="submit" id="register" class="registerBtn submitBtn" value="Register">
             Already a member? <a href="" class="signIn" id="signInLink">Sign in</a>
         </div>
-        
+
     </form>
     <form action="./homepage.html" class="signInForm" id="signInForm">
         <h1>Sign In</h1>
         <input type="email" placeholder="Email" id="signInEmail">
         <input type="password" placeholder="Password" id="signInPassword">
         <input type="submit" value="Sign In" class="submitBtn signInBtn" id="signInBtn">
+        <a href="" id="backToRegBtn">Back to Registration</a>
     </form>
 </body>
 
