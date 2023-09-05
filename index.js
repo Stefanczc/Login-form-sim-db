@@ -4,6 +4,7 @@ const signInForm = document.getElementById('signInForm');
 const signInLink = document.getElementById('signInLink');
 const signUpForm = document.getElementById('signUpForm');
 const backToRegBtn = document.getElementById('backToRegBtn');
+const cbox = document.getElementById('cbox');
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 function addUser(e) {
@@ -19,6 +20,7 @@ function addUser(e) {
     const emailError = document.getElementById('emailError');
     const passwordError = document.getElementById('passwordError');
     const confirmPasswordError = document.getElementById('confirmPasswordError');
+    const cboxError = document.getElementById('cboxError');
 
     let validFields = false;
 
@@ -49,7 +51,7 @@ function addUser(e) {
         emailError.innerText = '';
         validFields = false;
     }
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword || password.length < 8) {
         passwordError.innerText = 'Passwords do not match';
         confirmPasswordError.innerText = 'Passwords do not match';
         passwordError.classList.add('fieldsError');
@@ -61,25 +63,15 @@ function addUser(e) {
         confirmPasswordError.innerText = '';
         validFields = false;
     }
-    if (password.length < 8) {
-        passwordError.innerText = 'At least 8 characters';
-        passwordError.classList.add('fieldsError');
+    if (!cbox.classList.contains('isChecked')) {
+        cboxError.innerText = 'You need to agree with the documents';
+        cboxError.classList.add('fieldsError');
         validFields = true;
     }
     else {
-        passwordError.innerText = '';
+        cboxError.innerText = '';
         validFields = false;
     }
-    if (confirmPassword.length < 8) {
-        confirmPassword.innerText = 'At least 8 characters';
-        confirmPassword.classList.add('fieldsError');
-        validFields = true;
-    }
-    else {
-        confirmPassword.innerText = '';
-        validFields = false;
-    }
-    console.log(users, validFields);
     if (validFields === false) {
         users.push({
             firstName: firstName,
@@ -94,6 +86,7 @@ function addUser(e) {
         document.getElementById('email').value = '';
         document.getElementById('password').value = '';
         document.getElementById('confirmPassword').value = '';
+
     }
     else {
         return;
@@ -131,5 +124,9 @@ backToRegBtn.addEventListener('click', (e) => {
     signUpForm.classList.remove('signUpFormFade');
     signInForm.classList.remove('signInFormOpen');
 })
+cbox.addEventListener('click', () => {
+    cbox.classList.toggle('isChecked');
+})
+
 
 
