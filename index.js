@@ -80,13 +80,13 @@ function addUser(e) {
             password: password
         });
         saveUserToLocalStorage();
+        openSignIn();
         alert('Registration Successful!');
         document.getElementById('firstname').value = '';
         document.getElementById('lastname').value = '';
         document.getElementById('email').value = '';
         document.getElementById('password').value = '';
         document.getElementById('confirmPassword').value = '';
-
     }
     else {
         return;
@@ -94,16 +94,16 @@ function addUser(e) {
 }
 
 function signInUser(e) {
-    e.preventDefault();
     const email = document.getElementById('signInEmail').value;
     const password = document.getElementById('signInPassword').value;
     for (let i = 0; i < users.length; i++) {
-        if (users[i].email === email || users[i].password === password) {
-            alert('LogIn succesful!');
+        if (users[i].email === email && users[i].password === password) {
+            alert('LogIn successful!');
             return;
         }
     }
     alert('Incorrect Credentials');
+    e.preventDefault();
 }
 
 function openSignIn(e) {
