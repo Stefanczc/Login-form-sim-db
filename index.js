@@ -26,53 +26,47 @@ function addUser(e) {
 
     if (firstName.length < 3) {
         firstNameError.innerText = 'At least 3 characters';
-        firstNameError.classList.add('fieldsError');
-        validFields = true;
+        validFields = false;
     }
     else {
         firstNameError.innerText = '';
-        validFields = false;
+        validFields = true;
     }
     if (lastName.length < 3) {
         lastNameError.innerText = 'At least 3 characters';
-        lastNameError.classList.add('fieldsError');
-        validFields = true;
+        validFields = false;
     }
     else {
         lastNameError.innerText = '';
-        validFields = false;
+        validFields = true;
     }
     if (!email.includes('@') || email.length < 3) {
         emailError.innerText = 'Incorrect E-mail';
-        emailError.classList.add('fieldsError');
-        validFields = true;
+        validFields = false;
     }
     else {
         emailError.innerText = '';
-        validFields = false;
+        validFields = true;
     }
     if (password !== confirmPassword || password.length < 8) {
         passwordError.innerText = 'Passwords do not match';
         confirmPasswordError.innerText = 'Passwords do not match';
-        passwordError.classList.add('fieldsError');
-        confirmPasswordError.classList.add('fieldsError');
-        validFields = true;
+        validFields = false;
     }
     else {
         passwordError.innerText = '';
         confirmPasswordError.innerText = '';
-        validFields = false;
-    }
-    if (!cbox.classList.contains('isChecked')) {
-        cboxError.innerText = 'You need to agree with the documents';
-        cboxError.classList.add('fieldsError');
         validFields = true;
+    }
+    if (!cbox.checked) {
+        cboxError.innerText = 'You need to agree with the documents';
+        validFields = false;
     }
     else {
         cboxError.innerText = '';
-        validFields = false;
     }
-    if (validFields === false) {
+
+    if (validFields === true) {
         users.push({
             firstName: firstName,
             lastName: lastName,
@@ -80,13 +74,15 @@ function addUser(e) {
             password: password
         });
         saveUserToLocalStorage();
-        openSignIn();
+        openSignIn(e);
         alert('Registration Successful!');
         document.getElementById('firstname').value = '';
         document.getElementById('lastname').value = '';
         document.getElementById('email').value = '';
         document.getElementById('password').value = '';
         document.getElementById('confirmPassword').value = '';
+        cboxError.innerText = '';
+        cbox.checked = false;
     }
     else {
         return;
@@ -98,12 +94,11 @@ function signInUser(e) {
     const password = document.getElementById('signInPassword').value;
     for (let i = 0; i < users.length; i++) {
         if (users[i].email === email && users[i].password === password) {
-            alert('LogIn successful!');
-            return;
+            return alert('LogIn successful!');
         }
     }
-    alert('Incorrect Credentials');
     e.preventDefault();
+    return alert('Incorrect Credentials');
 }
 
 function openSignIn(e) {
@@ -124,9 +119,7 @@ backToRegBtn.addEventListener('click', (e) => {
     signUpForm.classList.remove('signUpFormFade');
     signInForm.classList.remove('signInFormOpen');
 })
-cbox.addEventListener('click', () => {
-    cbox.classList.toggle('isChecked');
-})
+
 
 
 
