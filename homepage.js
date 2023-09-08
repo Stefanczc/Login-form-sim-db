@@ -35,10 +35,17 @@ function processDataArray(dataArray) {
     const titleJob = document.createElement('h3');
     titleJob.innerText = item.title;
     const companyJobName = document.createElement('p');
-    companyJobName.innerText = item.company;
+    companyJobName.innerText = `Company: ${item.company}`;
+    const dateAdded = document.createElement('p');
+    dateAdded.innerText = `Added: ${item.dateAdded}`;
+    const jobLink = document.createElement('a');
+    jobLink.href = item.url;
+    jobLink.innerText = 'Jump to job address'
 
     job.appendChild(titleJob);
     job.appendChild(companyJobName);
+    job.appendChild(dateAdded);
+    job.appendChild(jobLink);
     listOfJobs.appendChild(job);
   
   });
